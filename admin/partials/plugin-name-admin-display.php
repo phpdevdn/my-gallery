@@ -20,25 +20,9 @@
 						&nbsp;&nbsp;&nbsp;<a href="#" class="gl-delete">delete gallery</a>
 					</td></tr>
 					<tr><td><label for="slide-home">Slide home</label></td></tr>
-					<tr><td class="slider-block">
-						<input type="text" name="slide_home" id="slide-home" value="<?php echo get_option('slide_home'); ?>">
-						<p><button class="add-butt">add slide</button></p>
-						<div class="slide-fr">
-							<img src="#" width="100px" height="100px" alt="">
-							<input type="hidden" id="fr-img" value="" >
-							<div class="input-gr">
-								<label for="fr-url">post url</label>							
-								<input type="text" id="fr-url" value="">
-							</div>
-							<div class="input-gr">
-								<label for="fr-title">title : </label>
-								<input type="text" id="fr-title" value="">
-							</div>
-							<div class="input-gr">
-								<label for="fr-desc">description : </label>
-								<input type="text" id="fr-desc" value="">
-							</div>
-						</div>
+					<tr><td class="slide-block">
+						<input type="text" name="slide_home" id="slide-home" class="slide-opt" value="<?php echo get_option('slide_home'); ?>">
+						<p><button class="slide-butt">add slide</button></p>
 					</td></tr>
  			</tbody>
 		</table>

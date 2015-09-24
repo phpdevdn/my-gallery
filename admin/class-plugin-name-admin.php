@@ -97,6 +97,7 @@ class Plugin_Name_Admin {
 		 */
 		wp_enqueue_media();
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/plugin-name-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'slider-home', plugin_dir_url( __FILE__ ) . 'js/slide-home.js', array( 'jquery' ), $this->version, false );
 
 	}
 	public function gallery_page(){
