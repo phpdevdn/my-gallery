@@ -1,0 +1,32 @@
+.slide-fr {
+    display: block;
+    border:1px solid #aaa;
+    padding:10px;
+    margin:10px 0;
+}
+
+.slide-fr:after {
+    display: block;
+    content: '';
+    clear: both;
+}
+
+.slide-fr img {
+    display: block;
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin: 0 10px 10px 0;
+}
+
+.slide-fr .input-gr {
+    display: block;
+    margin: 11px 20px;
+    width: auto;
+}
+
+.input-gr label {
+    display: inline-block;
+    width: 86px;
+    text-align: left;
+}
