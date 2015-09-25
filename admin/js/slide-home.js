@@ -1,10 +1,11 @@
 (function($){
 	$(document).ready(function(){
 		var slide=(function(){
-			var $sl_blk=$('.slide-block'),
+			var $form=$("#gl-form"),
+				$sl_blk=$('.slide-block'),
 				$sl_opt=$sl_blk.find('.slide-opt'),
 				$sl_add=$sl_blk.find('.slide-butt');
-			var sl_frame;
+			var sl_frame,img_clk,id_clk;
 			
 			var sl_fr=function(){
 				var $fr_blk=$("<div></div>").addClass('slide-fr');
@@ -28,11 +29,10 @@
 				$blk.append($label,$input);
 				return $blk ;
 			}
-			var add_image=function(element){
-				var $img_clk=$(element);
-				var $id_clk=$img_clk.siblings('.fr-img-id');
-				console.log($img_clk);
- 			    if ( sl_frame ) {
+			var add_image=function(evt){
+				$img_clk=$(evt.target);	
+				$id_clk=$img_clk.siblings('.fr-img-id');
+   			    if ( sl_frame ) {
 			      sl_frame.open();
 			      return;
 			    }
@@ -43,9 +43,9 @@
 				      },
 				      multiple: false  
 			    });
-			    sl_frame.on( 'select', function() {
+				sl_frame.on( 'select',function(){
 					var attachment = sl_frame.state().get('selection').first().toJSON();
-					$img_clk.attr({'src':attachment.url});
+ 					$img_clk.attr({'src':attachment.url});
 					$id_clk.attr({'value':attachment.id});
 				});
 				sl_frame.open();
@@ -58,12 +58,29 @@
 					evt.preventDefault();
 					$sl_blk.append(sl_fr());
 				});
-				$sl_blk.on('click','.fr-img',function(evt){
-					add_image(evt.target);
-				});
+				$sl_blk.on('click','.fr-img',add_image);
 				$sl_blk.on('click','.fr-del',function(){
 					var $blk=$(this).parent();
 					$blk.remove();
+				});
+				$form.submit(function(event) {
+ 					if($('.slide-fr').length > 0){
+							var opt_arr=[];
+							var $slide_fr=$('.slide-fr');
+							$slide_fr.each(function(){
+								var slide_dt={
+									'id':$(this).find('.fr-img-id').val(),
+									'url':$(this).find('.fr-url').val(),
+									'title':$(this).find('.fr-title').val(),
+									'desc':$(this).find('.fr-desc').val()
+								}
+								opt_arr.push(slide_dt);
+							});
+							$sl_opt.val(JSON.stringify(opt_arr));
+					} else{
+						$sl_opt.val('');
+					}
+ 					
 				});
 
 			}

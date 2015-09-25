@@ -58,8 +58,7 @@ jQuery(function( $ ) {
 					});
 		    	gl_frame.on('update',function(selection){
 		    		var output=wp.media.gallery.shortcode( selection ).string();
-		    		output=output.replace(/\"/g,"'");   		
-		    		gl_code.attr({ 'value':output});
+ 		    		gl_code.val(output);
 		    	});
 
 				gl_frame.open();
